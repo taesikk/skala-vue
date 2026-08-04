@@ -15,7 +15,7 @@ watchEffect(() => {
 })
 
 const BRAND_TAGLINE = {
-  'weather-home': '날씨 좋은 김에 맛집도 볼까?',
+  'weather-home': '날씨도 좋은데 맛집도 볼까?',
   settings: '로그인하고 내 정보도 볼까?',
 }
 
