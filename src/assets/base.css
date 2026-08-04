@@ -1,52 +1,81 @@
-/* color palette from <https://github.com/vuejs/theme> */
+/* ------------------------------------------------------------------ */
+/* Weather Dashboard 디자인 토큰 — 미니멀 화이트 + 파스텔 그라데이션 블롭  */
+/* ------------------------------------------------------------------ */
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f6f6f7;
+  --color-surface-translucent: rgba(255, 255, 255, 0.86);
+  --color-border: #ececee;
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+  --color-text: #111318;
+  --color-text-muted: #6b7280;
+  --color-text-faint: #9ca3af;
 
-  --vt-c-indigo: #2c3e50;
+  --color-ink: #111318;
+  --color-accent: #7c5cf0;
+  --color-accent-soft: #f1edfe;
 
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+  --color-warm: #ea580c;
+  --color-warm-soft: #fff1e6;
+  --color-cool: #2563eb;
+  --color-cool-soft: #eaf1ff;
+  --color-success: #16a34a;
+  --color-success-soft: #eafbf0;
 
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-}
+  --gradient-sunny: linear-gradient(145deg, #ffd39b 0%, #ff9a56 55%, #ff7a45 100%);
+  --gradient-rain: linear-gradient(145deg, #bcd9ff 0%, #6ea8fe 55%, #4f7bf0 100%);
+  --gradient-cloud: linear-gradient(145deg, #e4d4ff 0%, #b39dfb 55%, #8a6ef5 100%);
+  --gradient-partly: linear-gradient(145deg, #fef3c7 0%, #fcd34d 45%, #93c5fd 100%);
+  --gradient-snow: linear-gradient(145deg, #eff8ff 0%, #bfe3fd 55%, #7dd3fc 100%);
+  --gradient-storm: linear-gradient(145deg, #c4b5fd 0%, #818cf8 55%, #4338ca 100%);
+  --gradient-brand: linear-gradient(120deg, #ff9a56 0%, #ff6aa2 50%, #7c5cf0 100%);
 
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-pill: 999px;
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
+  --shadow-sm: 0 2px 8px rgba(17, 19, 24, 0.05);
+  --shadow-md: 0 16px 36px -14px rgba(17, 19, 24, 0.14);
+  --shadow-lg: 0 28px 56px -18px rgba(17, 19, 24, 0.2);
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
 
-  --section-gap: 160px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+    --color-bg: #0c0d10;
+    --color-surface: #16171c;
+    --color-surface-soft: #1c1d24;
+    --color-surface-translucent: rgba(22, 23, 28, 0.82);
+    --color-border: #2a2b33;
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
+    --color-text: #f2f2f4;
+    --color-text-muted: #a1a1aa;
+    --color-text-faint: #71717a;
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+    --color-ink: #f2f2f4;
+    --color-accent: #a48bff;
+    --color-accent-soft: #241f38;
+
+    --color-warm: #fb923c;
+    --color-warm-soft: #2c1c10;
+    --color-cool: #60a5fa;
+    --color-cool-soft: #101d2c;
+    --color-success: #4ade80;
+    --color-success-soft: #0e2318;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 16px 36px -14px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 28px 56px -18px rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -55,32 +84,56 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+@font-face {
+  font-family: 'LeeSeoyun';
+  src: url('./font1.ttf') format('truetype');
   font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
   min-height: 100vh;
   color: var(--color-text);
-  background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
+  background: var(--color-bg);
   line-height: 1.6;
   font-family:
-    Inter,
+    'LeeSeoyun',
+    'Pretendard Variable',
+    Pretendard,
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
     Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
+    'Apple SD Gothic Neo',
+    'Malgun Gothic',
     sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
