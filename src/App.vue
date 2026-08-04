@@ -1,7 +1,25 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { computed, watchEffect } from 'vue'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
 import UnitToggler from '@/components/exercise/UnitToggler.vue'
+import ThemeToggle from '@/components/exercise/ThemeToggle.vue'
 import WeatherIcon from '@/components/exercise/WeatherIcon.vue'
+import GlassMenu from '@/components/exercise/GlassMenu.vue'
+import { useConfigStore } from '@/stores/configStore'
+
+const configStore = useConfigStore()
+const route = useRoute()
+
+watchEffect(() => {
+  document.documentElement.setAttribute('data-theme', configStore.theme)
+})
+
+const BRAND_TAGLINE = {
+  'weather-home': '날씨 좋은 김에 맛집도 볼까?',
+  settings: '로그인하고 내 정보도 볼까?',
+}
+
+const brandTagline = computed(() => BRAND_TAGLINE[route.name] ?? '오늘도 좋은 하루 보내세요')
 </script>
 
 <template>
@@ -11,9 +29,13 @@ import WeatherIcon from '@/components/exercise/WeatherIcon.vue'
         <span class="app-header__brand-icon">
           <WeatherIcon status="맑음" size="22px" />
         </span>
-        날씨도 좋은데 뭐먹을까?
+        {{ brandTagline }}
       </RouterLink>
-      <UnitToggler />
+      <GlassMenu />
+      <div class="app-header__actions">
+        <ThemeToggle />
+        <UnitToggler v-if="route.name === 'weather-home'" />
+      </div>
     </div>
     <span class="app-header__sheen"></span>
   </header>
@@ -32,7 +54,7 @@ import WeatherIcon from '@/components/exercise/WeatherIcon.vue'
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(250, 250, 250, 0.82);
+  background: var(--color-surface-translucent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border);
@@ -85,6 +107,12 @@ import WeatherIcon from '@/components/exercise/WeatherIcon.vue'
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.app-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 main {

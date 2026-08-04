@@ -9,6 +9,11 @@ const router = createRouter({
       component: () => import('../views/WeatherHomeView.vue'),
     },
     {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('../views/SettingsView.vue'),
+    },
+    {
       path: '/weather/:cityId',
       name: 'weather-detail',
       component: () => import('../views/WeatherDetailView.vue'),
