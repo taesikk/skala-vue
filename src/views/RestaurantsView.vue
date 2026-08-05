@@ -6,6 +6,10 @@ import RestaurantForm from '@/components/exercise/RestaurantForm.vue'
 import HourglassLoader from '@/components/exercise/HourglassLoader.vue'
 import * as restaurantApi from '@/services/restaurantApiClient'
 
+// 탭에 처음 들어왔을 때만 전체 화면 모래시계를 보여주기 위한 플래그.
+// 이후 검색으로 인한 재조회는 목록 영역에만 작게 표시한다.
+const hasLoadedOnce = ref(false)
+
 const restaurants = ref([])
 const isLoading = ref(true)
 const loadError = ref(null)
@@ -25,6 +29,7 @@ async function loadRestaurants() {
     loadError.value = err.message
   } finally {
     isLoading.value = false
+    hasLoadedOnce.value = true
   }
 }
 
@@ -61,38 +66,53 @@ async function handleDelete(id) {
 
 <template>
   <div class="page-container">
-    <BaseDashboardCard title="맛집 추가하기" icon="➕">
-      <RestaurantForm :loading="isSubmitting" @submit="handleAdd" />
-      <p v-if="submitError" class="error-text">⚠️ {{ submitError }}</p>
-    </BaseDashboardCard>
-
-    <BaseDashboardCard title="나만의 전국맛집" icon="🍽️">
-      <input
-        class="search-input"
-        type="text"
-        placeholder="가게 이름이나 지역으로 검색"
-        :value="searchKeyword"
-        @input="onSearchInput($event.target.value)"
-      />
-
-      <div v-if="isLoading" class="loading-row">
-        <HourglassLoader />
+    <Transition name="fade" mode="out-in">
+      <div v-if="!hasLoadedOnce" key="loader" class="loader-stage">
+        <HourglassLoader message="맛집 정보를 불러오는 중" />
       </div>
 
-      <p v-else-if="loadError" class="error-text">⚠️ {{ loadError }}</p>
+      <div v-else key="content">
+        <BaseDashboardCard title="맛집 추가하기" icon="➕">
+          <RestaurantForm :loading="isSubmitting" @submit="handleAdd" />
+          <p v-if="submitError" class="error-text">⚠️ {{ submitError }}</p>
+        </BaseDashboardCard>
 
-      <ul v-else-if="restaurants.length" class="restaurant-list">
-        <li v-for="item in restaurants" :key="item.id">
-          <RestaurantCard :restaurant="item" @delete="handleDelete" />
-        </li>
-      </ul>
+        <BaseDashboardCard title="나만의 전국맛집" icon="🍽️">
+          <input
+            class="search-input"
+            type="text"
+            placeholder="가게 이름이나 주소로 검색 (예: 부산)"
+            :value="searchKeyword"
+            @input="onSearchInput($event.target.value)"
+          />
 
-      <p v-else class="empty-message">등록된 맛집이 없습니다. 위에서 추가해보세요.</p>
-    </BaseDashboardCard>
+          <div v-if="isLoading" class="loading-row">
+            <HourglassLoader message="맛집 검색 중" />
+          </div>
+
+          <p v-else-if="loadError" class="error-text">⚠️ {{ loadError }}</p>
+
+          <ul v-else-if="restaurants.length" class="restaurant-list">
+            <li v-for="item in restaurants" :key="item.id">
+              <RestaurantCard :restaurant="item" @delete="handleDelete" />
+            </li>
+          </ul>
+
+          <p v-else class="empty-message">등록된 맛집이 없습니다. 위에서 추가해보세요.</p>
+        </BaseDashboardCard>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <style scoped>
+.loader-stage {
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .search-input {
   width: 100%;
   border: 1px solid var(--color-border);

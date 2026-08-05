@@ -24,8 +24,8 @@ function toQueryString(params) {
   return query ? `?${query}` : ''
 }
 
-export async function getAll({ keyword = '', region = '' } = {}) {
-  const { data } = await client.get(toQueryString({ keyword, region }))
+export async function getAll({ keyword = '' } = {}) {
+  const { data } = await client.get(toQueryString({ keyword }))
   return data
 }
 

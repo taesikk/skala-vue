@@ -31,7 +31,6 @@ export function handleRestaurantRequest({ method, url, data }) {
     if (httpMethod === 'GET') {
       const results = listRestaurants({
         keyword: searchParams.get('keyword') ?? '',
-        region: searchParams.get('region') ?? '',
       })
       return jsonResponse(200, results)
     }

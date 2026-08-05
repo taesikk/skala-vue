@@ -1,3 +1,12 @@
+<script setup>
+defineProps({
+  message: {
+    type: String,
+    default: '날씨 정보를 불러오는 중',
+  },
+})
+</script>
+
 <template>
   <div class="hourglass-loader">
     <div class="hourglass">
@@ -9,7 +18,7 @@
       <span class="hourglass__grain hourglass__grain--3"></span>
     </div>
     <p class="hourglass-loader__text">
-      날씨 정보를 불러오는 중
+      {{ message }}
       <span class="hourglass-loader__dots">
         <span></span>
         <span></span>

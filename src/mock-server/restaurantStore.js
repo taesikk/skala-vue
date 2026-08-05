@@ -9,12 +9,14 @@ export function resetRestaurants() {
   nextId = restaurants.length + 1
 }
 
-export function listRestaurants({ keyword = '', region = '' } = {}) {
-  return restaurants.filter((item) => {
-    const matchesKeyword = keyword ? item.name.includes(keyword) : true
-    const matchesRegion = region ? item.region.includes(region) : true
-    return matchesKeyword && matchesRegion
-  })
+// 검색 키워드는 가게 이름 또는 주소 중 하나라도 일치하면 결과에 포함한다.
+export function listRestaurants({ keyword = '' } = {}) {
+  const trimmed = keyword.trim()
+  if (!trimmed) return restaurants
+
+  return restaurants.filter(
+    (item) => item.name.includes(trimmed) || item.address.includes(trimmed),
+  )
 }
 
 export function findRestaurantById(id) {
