@@ -40,5 +40,8 @@ export async function fetchPopularVideos(limit = 5) {
     secondary: `${video.snippet?.channelTitle ?? ''} · 조회수 ${Number(
       video.statistics?.viewCount ?? 0,
     ).toLocaleString()}회`,
+    thumbnail:
+      video.snippet?.thumbnails?.medium?.url ?? video.snippet?.thumbnails?.default?.url ?? '',
+    url: `https://www.youtube.com/watch?v=${video.id}`,
   }))
 }

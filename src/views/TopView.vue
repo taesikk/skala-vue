@@ -14,6 +14,7 @@ const coins = ref([])
 const videoPhase = ref('loading')
 const videoError = ref(null)
 const videos = ref([])
+const selectedVideoId = ref(null)
 
 async function loadCoins() {
   coinPhase.value = 'loading'
@@ -30,11 +31,16 @@ async function loadVideos() {
   videoPhase.value = 'loading'
   try {
     videos.value = await fetchPopularVideos(10)
+    selectedVideoId.value = videos.value[0]?.id ?? null
     videoPhase.value = 'ready'
   } catch (err) {
     videoError.value = err?.message || '인기 영상 정보를 불러오지 못했습니다.'
     videoPhase.value = 'error'
   }
+}
+
+function handleSelectVideo(item) {
+  selectedVideoId.value = item.id
 }
 
 onMounted(() => {
@@ -63,7 +69,22 @@ onMounted(() => {
     </BaseDashboardCard>
 
     <BaseDashboardCard title="유튜브 인기 영상" icon="▶️">
-      <RankingList v-if="videoPhase === 'ready'" :items="videos" />
+      <div v-if="videoPhase === 'ready' && selectedVideoId" class="video-embed">
+        <iframe
+          :src="`https://www.youtube-nocookie.com/embed/${selectedVideoId}`"
+          title="YouTube 영상 미리보기"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <RankingList
+        v-if="videoPhase === 'ready'"
+        :items="videos"
+        clickable
+        :active-id="selectedVideoId"
+        @select="handleSelectVideo"
+      />
       <div v-else-if="videoPhase === 'loading'" class="loader-row">
         <HourglassLoader message="인기 영상을 불러오는 중" />
       </div>
@@ -71,7 +92,9 @@ onMounted(() => {
         <p class="error-text">⚠️ {{ videoError }}</p>
         <button class="retry-btn" type="button" @click="loadVideos">다시 시도</button>
       </template>
-      <p v-if="videoPhase === 'ready'" class="ticker-caption">YouTube 대한민국 인기 급상승 동영상 TOP10</p>
+      <p v-if="videoPhase === 'ready'" class="ticker-caption">
+        순위를 클릭하면 위에서 바로 재생돼요 · YouTube 대한민국 인기 급상승 동영상 TOP10
+      </p>
     </BaseDashboardCard>
   </div>
 </template>
@@ -100,6 +123,24 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   padding: var(--space-4) 0;
+}
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000;
+}
+
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .error-text {

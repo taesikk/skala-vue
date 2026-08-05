@@ -14,7 +14,17 @@ const props = defineProps({
     type: Number,
     default: 4500,
   },
+  clickable: {
+    type: Boolean,
+    default: false,
+  },
+  activeId: {
+    type: String,
+    default: null,
+  },
 })
+
+const emit = defineEmits(['select'])
 
 const MEDAL_EMOJIS = ['🥇', '🥈', '🥉']
 const KEYCAP_DIGITS = ['0️⃣', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣']
@@ -70,10 +80,28 @@ onUnmounted(stopRolling)
   <div class="ranking-pager">
     <Transition name="page-fade" mode="out-in">
       <ul :key="activePage" class="ranking-list">
-        <li v-for="item in activeItems" :key="item.id" class="ranking-list__row">
+        <li
+          v-for="item in activeItems"
+          :key="item.id"
+          class="ranking-list__row"
+          :class="{ 'is-clickable': clickable, 'is-active': clickable && item.id === activeId }"
+          @click="clickable && emit('select', item)"
+        >
           <span class="ranking-list__rank">{{ rankEmoji(item.rank) }}</span>
+          <img v-if="item.thumbnail" :src="item.thumbnail" :alt="item.primary" class="ranking-list__thumb" />
           <span class="ranking-list__name">{{ item.primary }}</span>
           <span class="ranking-list__meta">{{ item.secondary }}</span>
+          <a
+            v-if="item.url"
+            :href="item.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ranking-list__external"
+            title="새 탭에서 열기"
+            @click.stop
+          >
+            ↗
+          </a>
         </li>
       </ul>
     </Transition>
@@ -105,6 +133,31 @@ onUnmounted(stopRolling)
   border-radius: var(--radius-md);
   background: var(--color-surface-soft);
   border: 1px solid var(--color-border);
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.ranking-list__row.is-clickable {
+  cursor: pointer;
+}
+
+.ranking-list__row.is-clickable:hover {
+  border-color: var(--color-accent);
+}
+
+.ranking-list__row.is-active {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+}
+
+.ranking-list__thumb {
+  flex-shrink: 0;
+  width: 56px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: var(--color-border);
 }
 
 .ranking-list__rank {
@@ -135,6 +188,18 @@ onUnmounted(stopRolling)
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.ranking-list__external {
+  flex-shrink: 0;
+  padding: 2px 4px;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  transition: color 0.15s ease;
+}
+
+.ranking-list__external:hover {
+  color: var(--color-accent);
 }
 
 .ranking-pager__dots {
