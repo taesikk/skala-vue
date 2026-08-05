@@ -18,6 +18,9 @@ const isLoading = ref(true)
 const loadError = ref(null)
 const weatherList = ref([])
 
+// 날씨 API는 최초 진입(onMounted) 또는 "다시 시도" 버튼 클릭 시에만 호출한다.
+// 검색어 입력으로는 절대 다시 호출하지 않고, 아래 filteredWeatherList computed가
+// 이미 불러온 weatherList를 필터링만 한다 — API 호출과 필터링을 분리하기 위함이다.
 async function loadWeather() {
   isLoading.value = true
   loadError.value = null
@@ -40,6 +43,7 @@ const searchQuery = ref('')
 const selectedCityInfo = ref(null)
 const activeDetailCity = ref(null)
 
+// 검색어에 따른 목록 필터링은 API를 다시 부르지 않고 computed로만 처리한다.
 const filteredWeatherList = computed(() => {
   const keyword = searchQuery.value.trim()
   if (!keyword) return weatherList.value
@@ -78,10 +82,11 @@ watch(selectedCityInfo, () => {
   console.log(`[watch 감지] 상태 바 문구가 업데이트되었습니다 -> "${statusMessage.value}"`)
 })
 
+// watchEffect는 searchQuery가 바뀔 때마다 자동으로 재실행되는 것만 보여주는
+// 예시이며, API 호출이나 목록 필터링은 절대 여기서 하지 않는다
+// (필터링은 filteredWeatherList computed가 전담).
 watchEffect(() => {
-  console.log(
-    `[watchEffect 자동 호출] 현재 검색어 '${searchQuery.value}'에 매칭되는 데이터를 필터링합니다.`,
-  )
+  console.log(`[watchEffect 감지] 검색어가 '${searchQuery.value}'(으)로 바뀌었습니다.`)
 })
 
 function onQueryUpdate(value) {

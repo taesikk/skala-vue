@@ -35,6 +35,7 @@ jobs:
           VITE_KAKAO_REST_KEY: ${{ secrets.VITE_KAKAO_REST_KEY }}
           VITE_KAKAO_JS_KEY: ${{ secrets.VITE_KAKAO_JS_KEY }}
           VITE_YOUTUBE_API_KEY: ${{ secrets.VITE_YOUTUBE_API_KEY }}
+          VITE_WEATHERAPI_KEY: ${{ secrets.VITE_WEATHERAPI_KEY }}
         run: npm run build
 
       - name: Setup Pages
