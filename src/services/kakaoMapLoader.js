@@ -1,5 +1,7 @@
 // 카카오맵 JavaScript SDK를 동적으로 한 번만 로드하는 싱글턴 로더.
+// 이미 로드됐으면 캐시된 Promise를 재사용해 스크립트를 중복 삽입하지 않는다.
 // https://apis.map.kakao.com/web/guide/
+
 const JS_KEY = import.meta.env.VITE_KAKAO_JS_KEY
 
 let loadPromise = null

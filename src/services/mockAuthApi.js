@@ -1,8 +1,9 @@
-import axios from 'axios'
-
 // 실제 인증 서버가 없으므로 JSONPlaceholder(무료 공개 목업 API, 키 불필요)에
 // 진짜 axios 요청을 보내 로딩/응답/에러 흐름은 그대로 연습하되,
 // 로그인 판정 자체는 이 브라우저의 localStorage에 남긴 "가입 계정" 목록으로 흉내낸다.
+
+import axios from 'axios'
+
 const client = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com',
   timeout: 8000,

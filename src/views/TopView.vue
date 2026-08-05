@@ -1,3 +1,8 @@
+<!--
+  Top 탭.
+  CoinGecko 실시간 인기 코인과 YouTube 인기 급상승 동영상을 각각
+  TOP10 랭킹(5개씩 페이징)으로 보여주고, 영상은 클릭 시 바로 재생한다.
+-->
 <script setup>
 import { ref, onMounted } from 'vue'
 import BaseDashboardCard from '@/components/exercise/BaseDashboardCard.vue'

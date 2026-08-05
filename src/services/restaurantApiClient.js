@@ -1,7 +1,10 @@
+// 나만의 맛집 mock REST API를 호출하는 axios 클라이언트.
+// getAll/getById/create/update/remove 함수를 제공하며,
+// 커스텀 어댑터를 통해 실제 네트워크 없이 mock 서버와 통신한다.
+
 import axios from 'axios'
 import { mockServerAdapter } from './mockServerAdapter'
 
-// Axios 인스턴스 설정: baseURL, timeout, 커스텀 어댑터(=목업 서버), 공통 에러 인터셉터.
 const client = axios.create({
   baseURL: '/api/restaurants',
   timeout: 5000,

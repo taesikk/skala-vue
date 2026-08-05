@@ -1,3 +1,7 @@
+<!--
+  카카오맵 SDK를 로드해 지도를 렌더링하고, places prop으로 받은
+  장소 목록을 마커로 표시하는 컴포넌트. 마커 클릭 시 이름을 인포윈도우로 보여준다.
+-->
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import { loadKakaoMaps } from '@/services/kakaoMapLoader'

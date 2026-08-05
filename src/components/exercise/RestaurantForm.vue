@@ -1,5 +1,9 @@
+<!--
+  나만의 맛집 추가 입력 폼.
+  6개 필드를 reactive 객체로 관리하고, 제출 시 상위로 emit한 뒤 폼을 초기화한다.
+-->
 <script setup>
-import { ref } from 'vue'
+import { reactive } from 'vue'
 
 defineProps({
   loading: {
@@ -10,32 +14,27 @@ defineProps({
 
 const emit = defineEmits(['submit'])
 
-const name = ref('')
-const region = ref('')
-const category = ref('')
-const address = ref('')
-const rating = ref(5)
-const memo = ref('')
+const form = reactive({
+  name: '',
+  region: '',
+  category: '',
+  address: '',
+  rating: 5,
+  memo: '',
+})
 
 function setRating(value) {
-  rating.value = value
+  form.rating = value
 }
 
 function onSubmit() {
-  emit('submit', {
-    name: name.value,
-    region: region.value,
-    category: category.value,
-    address: address.value,
-    rating: rating.value,
-    memo: memo.value,
-  })
-  name.value = ''
-  region.value = ''
-  category.value = ''
-  address.value = ''
-  rating.value = 5
-  memo.value = ''
+  emit('submit', { ...form })
+  form.name = ''
+  form.region = ''
+  form.category = ''
+  form.address = ''
+  form.rating = 5
+  form.memo = ''
 }
 </script>
 
@@ -44,18 +43,18 @@ function onSubmit() {
     <div class="restaurant-form__row">
       <div class="restaurant-form__field">
         <label for="r-name">가게 이름</label>
-        <input id="r-name" v-model="name" type="text" placeholder="예: 톤쇼우" required />
+        <input id="r-name" v-model="form.name" type="text" placeholder="예: 톤쇼우" required />
       </div>
       <div class="restaurant-form__field">
         <label for="r-region">지역</label>
-        <input id="r-region" v-model="region" type="text" placeholder="예: 부산" required />
+        <input id="r-region" v-model="form.region" type="text" placeholder="예: 부산" required />
       </div>
     </div>
 
     <div class="restaurant-form__row">
       <div class="restaurant-form__field">
         <label for="r-category">음식 종류</label>
-        <input id="r-category" v-model="category" type="text" placeholder="예: 일식" required />
+        <input id="r-category" v-model="form.category" type="text" placeholder="예: 일식" required />
       </div>
       <div class="restaurant-form__field">
         <label>별점</label>
@@ -65,7 +64,7 @@ function onSubmit() {
             :key="n"
             type="button"
             class="restaurant-form__star"
-            :class="{ 'is-filled': n <= rating }"
+            :class="{ 'is-filled': n <= form.rating }"
             @click="setRating(n)"
           >
             ★
@@ -78,7 +77,7 @@ function onSubmit() {
       <label for="r-address">주소</label>
       <input
         id="r-address"
-        v-model="address"
+        v-model="form.address"
         type="text"
         placeholder="예: 부산 금정구 금강로 247-10"
         required
@@ -87,7 +86,7 @@ function onSubmit() {
 
     <div class="restaurant-form__field">
       <label for="r-memo">메모</label>
-      <textarea id="r-memo" v-model="memo" rows="2" placeholder="방문 후기나 추천 이유를 적어보세요"></textarea>
+      <textarea id="r-memo" v-model="form.memo" rows="2" placeholder="방문 후기나 추천 이유를 적어보세요"></textarea>
     </div>
 
     <button class="restaurant-form__submit" type="submit" :disabled="loading">

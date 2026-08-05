@@ -1,3 +1,7 @@
+<!--
+  해/달 모양 다크·라이트 모드 토글 버튼.
+  configStore의 theme 상태와 연동되어 클릭할 때마다 테마를 전환한다.
+-->
 <script setup>
 import { useConfigStore } from '@/stores/configStore'
 

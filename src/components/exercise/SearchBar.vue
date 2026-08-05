@@ -1,3 +1,8 @@
+<!--
+  도시 검색 입력창.
+  입력값을 update-query 이벤트로 상위에 emit하고,
+  현재 검색/선택 상태 문구를 아래에 보여준다.
+-->
 <script setup>
 defineProps({
   searchQuery: {

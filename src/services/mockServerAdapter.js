@@ -1,3 +1,6 @@
+// axios 커스텀 어댑터. 실제 XHR/fetch 대신 mock 서버 핸들러를 호출해
+// 요청을 처리하고, axios가 기대하는 응답/에러 형태로 흉내낸다.
+
 import { handleRestaurantRequest } from '@/mock-server/restaurantServer'
 
 // 실제 네트워크 왕복을 흉내내기 위한 인위적 지연.

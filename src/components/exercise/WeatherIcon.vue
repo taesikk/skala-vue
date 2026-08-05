@@ -1,3 +1,7 @@
+<!--
+  날씨 상태(맑음/구름/비/눈/번개)에 맞는 애니메이션 SVG 아이콘.
+  status prop에 따라 모양과 애니메이션 클래스를 다르게 렌더링한다.
+-->
 <script setup>
 import { computed } from 'vue'
 import { getStatusAnimKey, getStatusBlobColor } from '@/constants/weatherStatus'

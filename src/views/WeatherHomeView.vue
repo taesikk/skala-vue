@@ -1,3 +1,8 @@
+<!--
+  홈 탭.
+  6개 도시의 실시간 날씨를 카드로 보여주고, 도시를 검색하거나 카드를
+  선택하면 그 지역 근처 맛집 패널을 함께 표시한다.
+-->
 <script setup>
 import { ref, computed, watch, watchEffect, onMounted, nextTick } from 'vue'
 import BaseDashboardCard from '@/components/exercise/BaseDashboardCard.vue'

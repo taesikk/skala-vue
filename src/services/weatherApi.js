@@ -1,6 +1,9 @@
+// Open-Meteo Forecast API로 날씨를 조회하는 서비스.
+// 키가 필요 없는 무료 API이며, WMO 날씨 코드를 앱에서 쓰는
+// 6가지 상태 라벨(맑음/구름/비/눈 등)로 정규화한다.
+
 import axios from 'axios'
 
-// Open-Meteo Forecast API — 별도 API 키가 필요 없는 무료 날씨 API.
 // https://open-meteo.com/en/docs
 const client = axios.create({
   baseURL: 'https://api.open-meteo.com/v1',

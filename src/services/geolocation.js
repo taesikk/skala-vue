@@ -1,4 +1,7 @@
 // 브라우저 Geolocation API를 Promise로 감싼 유틸.
+// 캠핑 탭에서 "내 위치로 찾기" 기능에 사용되며, 권한 거부 등
+// 에러 상황을 사용자에게 보여줄 문구로 변환해 reject한다.
+
 export function getCurrentPosition() {
   return new Promise((resolve, reject) => {
     if (!navigator.geolocation) {

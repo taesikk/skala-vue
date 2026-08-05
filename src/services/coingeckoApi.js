@@ -1,6 +1,9 @@
+// CoinGecko 트렌딩 코인 검색 API 호출 서비스.
+// API 키 없이 브라우저에서 바로 호출 가능하며(CORS 공개), 지금 가장 많이
+// 검색되는 코인 TOP N을 조회한다.
+
 import axios from 'axios'
 
-// CoinGecko 트렌딩 코인 검색 API — API 키 불필요, CORS 완전 공개(access-control-allow-origin: *)
 // https://docs.coingecko.com/reference/trending-search
 const client = axios.create({
   baseURL: 'https://api.coingecko.com/api/v3',

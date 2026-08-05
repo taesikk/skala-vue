@@ -1,3 +1,7 @@
+<!--
+  헤더 상단의 유리질감(glassmorphism) 탭 네비게이션 메뉴.
+  홈/전국맛집/캠핑/Top/로그인 5개 탭으로 이동하는 라우터 링크를 보여준다.
+-->
 <script setup>
 import { RouterLink } from 'vue-router'
 </script>

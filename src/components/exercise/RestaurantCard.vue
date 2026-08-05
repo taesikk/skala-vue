@@ -1,3 +1,7 @@
+<!--
+  나만의 맛집 목록 카드 하나.
+  별점을 별 문자로 표시하고, 삭제 버튼 클릭 시 id를 delete 이벤트로 emit한다.
+-->
 <script setup>
 import { computed } from 'vue'
 

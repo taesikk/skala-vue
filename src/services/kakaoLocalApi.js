@@ -1,6 +1,8 @@
+// 카카오 로컬 API로 주변 맛집/캠핑장을 키워드 검색하는 서비스.
+// 좌표 기준 거리순 검색과 전국 키워드 검색을 모두 지원한다.
+
 import axios from 'axios'
 
-// 카카오 로컬 API — 키워드로 장소 검색 (무료, REST API 키 필요)
 // https://developers.kakao.com/docs/latest/ko/local/dev-guide#search-by-keyword
 const REST_KEY = import.meta.env.VITE_KAKAO_REST_KEY
 

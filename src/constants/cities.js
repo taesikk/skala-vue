@@ -1,3 +1,6 @@
+// 홈 화면에 표시할 6개 도시 목록(이름/지역/좌표) 상수와
+// cityId로 도시를 찾는 헬퍼 함수.
+
 export const CITY_LIST = [
   { id: 'city_01', name: '서울', region: '대한민국 서울특별시', lat: 37.5665, lon: 126.978 },
   { id: 'city_02', name: '수원', region: '대한민국 경기도 수원시', lat: 37.2636, lon: 127.0286 },

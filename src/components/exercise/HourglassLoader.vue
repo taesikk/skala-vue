@@ -1,3 +1,7 @@
+<!--
+  모래시계 모양 로딩 스피너.
+  message prop으로 상황별 안내 문구(날씨/맛집/캠핑장 등)를 바꿔 표시한다.
+-->
 <script setup>
 defineProps({
   message: {

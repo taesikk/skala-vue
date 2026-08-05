@@ -1,3 +1,7 @@
+<!--
+  정의되지 않은 경로로 진입했을 때 보여주는 404 페이지.
+  버튼을 누르면 홈(날씨 메인)으로 돌아간다.
+-->
 <script setup>
 import { useRouter } from 'vue-router'
 

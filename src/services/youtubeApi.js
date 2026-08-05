@@ -1,6 +1,8 @@
+// YouTube Data API v3로 대한민국 인기 급상승 동영상을 조회하는 서비스.
+// 제목·채널명·조회수와 함께 썸네일·시청 링크도 함께 반환한다.
+
 import axios from 'axios'
 
-// YouTube Data API v3 — 대한민국 인기 급상승 동영상 차트
 // https://developers.google.com/youtube/v3/docs/videos/list
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY
 

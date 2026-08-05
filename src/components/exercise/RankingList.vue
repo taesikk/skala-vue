@@ -1,3 +1,8 @@
+<!--
+  순위 리스트 컴포넌트.
+  items를 5개씩 페이징하며 순위별 이모지를 붙이고, clickable이면
+  행 클릭 시 선택된 항목을 select 이벤트로 emit한다.
+-->
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 

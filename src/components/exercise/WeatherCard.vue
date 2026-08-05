@@ -1,3 +1,8 @@
+<!--
+  도시별 날씨 요약 카드.
+  클릭하면 카드가 선택되고(select-card), 상세보기 버튼을 누르면
+  상세 모달을 여는 이벤트(click-detail)를 emit한다.
+-->
 <script setup>
 import { computed } from 'vue'
 import { useConfigStore } from '@/stores/configStore'

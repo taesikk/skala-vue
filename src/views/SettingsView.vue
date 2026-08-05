@@ -1,3 +1,8 @@
+<!--
+  로그인 탭.
+  mock 로그인/회원가입 폼을 보여주고, 로그인 상태면 프로필 카드와
+  로그아웃 버튼을 보여준다.
+-->
 <script setup>
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/authStore'

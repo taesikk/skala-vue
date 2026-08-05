@@ -1,3 +1,7 @@
+// Vue Router 설정.
+// GitHub Pages 배포를 고려해 해시 기반 히스토리를 사용하며,
+// 각 탭의 라우트와 지연 로딩(lazy import) 컴포넌트를 정의한다.
+
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({

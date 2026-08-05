@@ -1,3 +1,8 @@
+<!--
+  로그인/회원가입 입력 폼.
+  mode prop(login/signup)에 따라 보여줄 필드를 바꾸고, 제출 시
+  입력값을 부모 컴포넌트로 emit한다.
+-->
 <script setup>
 import { ref, watch } from 'vue'
 

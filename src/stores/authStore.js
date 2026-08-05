@@ -1,3 +1,6 @@
+// 로그인 세션을 관리하는 Pinia 스토어.
+// 현재 로그인한 사용자 정보를 localStorage에 영속화해 새로고침 후에도 유지한다.
+
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 

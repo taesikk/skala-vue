@@ -1,3 +1,7 @@
+<!--
+  선택된 도시의 상세 날씨 정보를 보여주는 팝업 모달.
+  city prop이 있을 때만 표시되며, 배경 클릭·ESC·닫기 버튼으로 닫을 수 있다.
+-->
 <script setup>
 import { computed, onMounted, onUnmounted } from 'vue'
 import { useConfigStore } from '@/stores/configStore'

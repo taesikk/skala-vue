@@ -1,6 +1,8 @@
+// DB 없이 메모리 배열로 맛집 데이터를 관리하는 인메모리 스토어.
+// 조회/검색/추가/수정/삭제 함수와 초기 데이터로 리셋하는 함수를 제공한다.
+
 import { SEED_RESTAURANTS } from './restaurantData'
 
-// DB 없이 메모리 배열로 데이터를 관리하는 인메모리 스토어.
 let restaurants = structuredClone(SEED_RESTAURANTS)
 let nextId = restaurants.length + 1
 

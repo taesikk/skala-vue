@@ -1,3 +1,8 @@
+<!--
+  날씨 상세 페이지.
+  라우트 파라미터(cityId)로 도시를 찾아 상세 기상 정보를 조회하고
+  카드 형태로 보여준다.
+-->
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'

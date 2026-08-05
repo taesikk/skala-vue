@@ -1,4 +1,6 @@
-// JSON 응답/에러 응답을 만드는 공통 유틸 + 프레임워크 없이 손으로 구현한 유효성 검사.
+// mock 서버 공용 유틸.
+// jsonResponse/HttpError로 응답·에러 형태를 통일하고,
+// 프레임워크 없이 손으로 구현한 맛집 입력값 유효성 검사·정규화 함수를 제공한다.
 
 export function jsonResponse(status, data) {
   return { status, data }

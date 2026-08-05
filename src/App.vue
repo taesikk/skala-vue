@@ -1,3 +1,8 @@
+<!--
+  루트 레이아웃 컴포넌트.
+  헤더(브랜드 문구/탭 메뉴/테마·단위 토글)와 라우터 뷰를 렌더링하고,
+  현재 라우트에 맞춰 헤더 문구와 페이지 전환 애니메이션을 관리한다.
+-->
 <script setup>
 import { computed, watchEffect } from 'vue'
 import { RouterLink, RouterView, useRoute } from 'vue-router'

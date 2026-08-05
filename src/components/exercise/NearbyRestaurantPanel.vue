@@ -1,3 +1,7 @@
+<!--
+  선택된 도시 근처 맛집을 카카오 로컬 API로 조회해
+  지도와 목록(거리·메뉴 링크 포함)으로 보여주는 패널.
+-->
 <script setup>
 import { ref, watch, onMounted } from 'vue'
 import { searchRestaurantsNearby } from '@/services/kakaoLocalApi'

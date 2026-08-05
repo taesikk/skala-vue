@@ -1,3 +1,7 @@
+<!--
+  섭씨/화씨 단위 토글 버튼(pill 스위치 형태).
+  configStore의 unit 상태와 연동되며, 홈 탭에서만 표시된다.
+-->
 <script setup>
 import { computed } from 'vue'
 import { useConfigStore } from '@/stores/configStore'

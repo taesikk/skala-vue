@@ -1,3 +1,6 @@
+// 정규식 경로 매칭으로 GET(목록/검색/단건)·POST·PATCH·DELETE를 직접 분기 처리하는
+// mock REST 서버 핸들러. 실제 네트워크 없이 axios 커스텀 어댑터에서 호출된다.
+
 import {
   listRestaurants,
   findRestaurantById,

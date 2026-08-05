@@ -1,3 +1,8 @@
+<!--
+  캠핑 탭.
+  내 위치 기준으로 날씨와 주변 캠핑장을 보여주거나 지역/이름 키워드로
+  캠핑장을 검색하며, 버튼·그리드·카드 등 일부 UI는 Element Plus로 구성한다.
+-->
 <script setup>
 import { ref, computed } from 'vue'
 // 이 페이지에서만 부분적으로 Element Plus를 사용한다 (버튼/그리드/카드/태그).

@@ -1,3 +1,8 @@
+<!--
+  전국 맛집 탭.
+  손으로 만든 mock REST API(정규식 라우팅 + 인메모리 스토어)로
+  나만의 맛집을 추가·삭제·검색하는 CRUD 화면.
+-->
 <script setup>
 import { ref, onMounted } from 'vue'
 import BaseDashboardCard from '@/components/exercise/BaseDashboardCard.vue'
