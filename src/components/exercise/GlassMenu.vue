@@ -35,6 +35,15 @@ import { RouterLink } from 'vue-router'
       <span>캠핑</span>
     </RouterLink>
 
+    <RouterLink to="/top" active-class="active" exact-active-class="active" title="Top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <rect x="3" y="10" width="5" height="11" rx="1"></rect>
+        <rect x="9.5" y="5" width="5" height="16" rx="1"></rect>
+        <rect x="16" y="13" width="5" height="8" rx="1"></rect>
+      </svg>
+      <span>Top</span>
+    </RouterLink>
+
     <RouterLink to="/settings" active-class="active" exact-active-class="active" title="로그인">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
         <path

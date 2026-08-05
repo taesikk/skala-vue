@@ -15,9 +15,10 @@ watchEffect(() => {
 })
 
 const BRAND_TAGLINE = {
-  'weather-home': '날씨도 좋은데 맛집도 볼까?',
+  'weather-home': '거긴 뭐가 맛있대?',
   'national-restaurants': '내가 다녀온 진짜 맛집만 모았어요!',
   camping: '이번 주말엔 캠핑 어때요?',
+  top: '지금 가장 핫한 게 뭘까?',
   settings: '로그인하고 내 정보도 볼까?',
 }
 

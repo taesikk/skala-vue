@@ -19,6 +19,11 @@ const router = createRouter({
       component: () => import('../views/CampingView.vue'),
     },
     {
+      path: '/top',
+      name: 'top',
+      component: () => import('../views/TopView.vue'),
+    },
+    {
       path: '/settings',
       name: 'settings',
       component: () => import('../views/SettingsView.vue'),
