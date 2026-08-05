@@ -28,6 +28,13 @@ import { RouterLink } from 'vue-router'
       <span>전국 맛집</span>
     </RouterLink>
 
+    <RouterLink to="/camping" active-class="active" exact-active-class="active" title="캠핑">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.5 22 20.5H2L12 2.5Zm0 4.33-6.02 10.9h3.2L12 12l2.82 5.73h3.2L12 6.83Z"></path>
+      </svg>
+      <span>캠핑</span>
+    </RouterLink>
+
     <RouterLink to="/settings" active-class="active" exact-active-class="active" title="로그인">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
         <path
