@@ -93,6 +93,8 @@ const brandTagline = computed(() => BRAND_TAGLINE[route.name] ?? '오늘도 좋�
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: var(--space-3);
   gap: var(--space-4);
 }
 
@@ -104,7 +106,24 @@ const brandTagline = computed(() => BRAND_TAGLINE[route.name] ?? '오늘도 좋�
   font-size: 1rem;
   letter-spacing: -0.01em;
   color: var(--color-ink);
+  white-space: nowrap;
   transition: opacity 0.15s ease;
+}
+
+@media (max-width: 640px) {
+  .app-header__inner {
+    justify-content: center;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .app-header__brand {
+    flex: 1 1 100%;
+    justify-content: center;
+    order: -1;
+    font-size: 0.9rem;
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 .app-header__brand:hover {

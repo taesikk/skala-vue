@@ -72,6 +72,10 @@ import { RouterLink } from 'vue-router'
   gap: 3px;
   padding: 3px;
   height: 32px;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   border-radius: 999px;
   backdrop-filter: blur(12px) saturate(180%) contrast(120%);
   -webkit-backdrop-filter: blur(12px) saturate(180%) contrast(120%);
@@ -122,5 +126,9 @@ import { RouterLink } from 'vue-router'
 
 .menu a:active {
   transform: scale(0.96);
+}
+
+.menu::-webkit-scrollbar {
+  display: none;
 }
 </style>

@@ -112,6 +112,7 @@ function onSubmit() {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
 }
 
 .restaurant-form__field label {
@@ -122,6 +123,8 @@ function onSubmit() {
 
 .restaurant-form__field input,
 .restaurant-form__field textarea {
+  width: 100%;
+  box-sizing: border-box;
   border: 1px solid var(--color-border);
   background: var(--color-surface-soft);
   border-radius: var(--radius-sm);
